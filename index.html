@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>John Lloyd Borces — IT Student & IoT Developer</title>
+  <meta name="description" content="Portfolio of John Lloyd Borces, BSIT student at Cebu Eastern College learning IoT and web development, and IoT hardware and app developer on the ElecTrack capstone." />
+  <meta name="theme-color" content="#0b2a20" />
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,100..900;1,62..125,100..900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+  <script>
+    /* pick the theme before first paint: saved choice, else the device setting */
+    (function () {
+      var t = null;
+      try { t = localStorage.getItem("jlb-theme"); } catch (e) {}
+      if (t !== "light" && t !== "dark") t = window.matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark";
+      document.documentElement.setAttribute("data-theme", t);
+      document.querySelector('meta[name="theme-color"]').content = t === "light" ? "#eef3ec" : "#0b2a20";
+    })();
+  </script>
+</head>
+<body>
+
+  <!-- copper traces running behind everything -->
+  <svg class="traces" aria-hidden="true" preserveAspectRatio="none" viewBox="0 0 1440 3600">
+    <g fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M-20 180 H320 L380 240 H700 L740 200 H1460" />
+      <path d="M1180 -20 V420 L1240 480 V900 L1180 960 V1460" />
+      <path d="M-20 1120 H180 L240 1180 V1600 L300 1660 H620" />
+      <path d="M1460 1500 H1100 L1040 1560 V2100 L980 2160 H760" />
+      <path d="M120 2300 V2700 L180 2760 H540 L600 2820 V3200" />
+      <path d="M1460 2900 H1220 L1160 2960 V3400 L1100 3460 H700 L640 3520 V3620" />
+    </g>
+    <g class="vias">
+      <circle cx="320" cy="180" r="6" /><circle cx="700" cy="240" r="6" /><circle cx="1180" cy="420" r="6" />
+      <circle cx="1240" cy="900" r="6" /><circle cx="240" cy="1180" r="6" /><circle cx="620" cy="1660" r="6" />
+      <circle cx="1040" cy="1560" r="6" /><circle cx="760" cy="2160" r="6" /><circle cx="180" cy="2760" r="6" />
+      <circle cx="1160" cy="2960" r="6" /><circle cx="700" cy="3460" r="6" />
+    </g>
+  </svg>
+  <div class="glow glow--a" aria-hidden="true"></div>
+  <div class="glow glow--b" aria-hidden="true"></div>
+
+  <!-- ================= NAV ================= -->
+  <header class="nav-wrap">
+    <nav class="nav glass" aria-label="Main">
+      <a href="#home" class="logo" aria-label="John Lloyd Borces, back to top">
+        <svg class="logo__mark" viewBox="0 0 74 28" aria-hidden="true">
+          <g class="logo__trace">
+            <path d="M13 3 V19 L8 24 H3" />
+            <path d="M22 3 V24 H31" />
+            <path d="M40 24 V3 H50 L54 7 V9.5 L50 13.5 H40 M50 13.5 H51 L55 17.5 V20 L51 24 H40" />
+            <path d="M55 18.75 H62" />
+          </g>
+          <g class="logo__pulse">
+            <path pathLength="100" d="M13 3 V19 L8 24 H3" />
+            <path pathLength="100" d="M22 3 V24 H31" />
+            <path pathLength="100" d="M40 24 V3 H50 L54 7 V9.5 L50 13.5 H40 M50 13.5 H51 L55 17.5 V20 L51 24 H40" />
+            <path pathLength="100" d="M55 18.75 H62" />
+          </g>
+          <g class="logo__pads">
+            <circle cx="13" cy="3" r="2.7" /><circle cx="3" cy="24" r="2.7" />
+            <circle cx="22" cy="3" r="2.7" /><circle cx="31" cy="24" r="2.7" />
+            <circle cx="40" cy="13.5" r="2.7" />
+          </g>
+          <g class="logo__holes">
+            <circle cx="13" cy="3" r="1" /><circle cx="3" cy="24" r="1" />
+            <circle cx="22" cy="3" r="1" /><circle cx="31" cy="24" r="1" />
+            <circle cx="40" cy="13.5" r="1" />
+          </g>
+          <circle class="logo__led" cx="66.5" cy="18.75" r="3.4" />
+        </svg>
+      </a>
+      <ul class="nav__links" id="navLinks">
+        <li><a href="#about">About</a></li>
+        <li><a href="#work">Work</a></li>
+        <li><a href="#inside">The plug</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#path">Path</a></li>
+      </ul>
+      <div class="nav__end">
+        <button class="theme-toggle" id="themeToggle" type="button" aria-label="Switch to light mode" aria-pressed="false" title="Lights on">
+          <span class="sw" aria-hidden="true"><span class="sw__knob"></span></span>
+          <span class="sw__led" aria-hidden="true"></span>
+        </button>
+        <a href="#contact" class="btn btn--sm nav__cta">Contact</a>
+        <button class="nav__burger" id="navBurger" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="navLinks">
+          <span></span><span></span>
+        </button>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <!-- ================= HERO ================= -->
+    <section class="hero" id="home">
+      <div class="hero__text">
+        <h1 class="hero__name"><span>John Lloyd</span><span>Borces</span></h1>
+        <p class="hero__role">BSIT student in Cebu City, learning IoT and web development</p>
+        <p class="hero__lede">I'm a BSIT student at Cebu Eastern College. I started with the hands-on side of IT, setting up and troubleshooting computers, and now I'm learning how hardware and software work together.</p>
+        <div class="hero__actions">
+          <a href="#work" class="btn">See my work</a>
+          <a href="#contact" class="btn btn--glass">Get in touch</a>
+        </div>
+      </div>
+
+      <div class="hero__stage" id="heroStage">
+        <div class="portrait" id="portrait">
+          <svg class="portrait__rings layer" viewBox="0 0 400 400" aria-hidden="true">
+            <circle cx="200" cy="200" r="190" />
+            <circle cx="200" cy="200" r="150" stroke-dasharray="4 10" />
+            <path d="M200 10 V60 M390 200 H340 M200 390 V340 M10 200 H60" />
+            <circle cx="200" cy="10" r="6" class="via" /><circle cx="390" cy="200" r="6" class="via" />
+            <circle cx="200" cy="390" r="6" class="via" /><circle cx="10" cy="200" r="6" class="via" />
+          </svg>
+          <figure class="portrait__card layer">
+            <img src="assets/profile.jpg" alt="Portrait of John Lloyd Borces" width="512" height="512" />
+            <figcaption>
+              <b>John Lloyd W. Borces</b>
+              <span>BS Information Technology, Cebu Eastern College</span>
+            </figcaption>
+          </figure>
+          <div class="portrait__sheen layer" aria-hidden="true"></div>
+          <span class="chip chip--status layer" style="--x:-16%;--y:5%;--z:90px"><i></i>Open to internships</span>
+          <span class="chip chip--r chip--hw layer" style="--x:80%;--y:20%;--z:120px">Hardware troubleshooting</span>
+          <span class="chip chip--r layer" style="--x:84%;--y:52%;--z:70px">JavaScript logic</span>
+          <span class="chip layer" style="--x:-18%;--y:42%;--z:140px">Teamwork</span>
+          <span class="chip chip--opt layer" style="--x:-12%;--y:66%;--z:100px">Learning IoT</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= ABOUT ================= -->
+    <section class="section about" id="about" aria-labelledby="aboutTitle">
+      <div class="about__body glass frame">
+        <div class="about__text">
+          <h2 class="h2" id="aboutTitle">I like the part you can hold</h2>
+          <p>I got into IT through the hands-on side: configuring computer hardware, troubleshooting what breaks, and helping people get their machines working. That's why I keep one foot in hardware while I learn the software side.</p>
+          <p>On our capstone, ElecTrack, I'm the IoT hardware and app developer. We're in the planning and design phase, so I'm mapping out the smart plug, its firmware and the app screens. In class, I helped my group write the logic for an ovulation calculator and built the clickable prototype for a hotel website design in Figma.</p>
+        </div>
+        <dl class="facts">
+          <div><dt>Based in</dt><dd>Cebu City, Philippines</dd></div>
+          <div><dt>Studying</dt><dd>BS Information Technology, Cebu Eastern College (currently enrolled)</dd></div>
+          <div><dt>Strong at</dt><dd>Hardware setup and troubleshooting, teamwork, time management</dd></div>
+          <div><dt>Looking for</dt><dd>An internship where I can learn from experienced people and get practical experience</dd></div>
+        </dl>
+      </div>
+    </section>
+
+    <!-- ================= WORK ================= -->
+    <section class="section work" id="work" aria-labelledby="workTitle">
+      <h2 class="h2" id="workTitle">Things I'm working on</h2>
+
+      <article class="feature glass" data-tilt>
+        <div class="feature__info">
+          <p class="feature__meta">
+            <span class="status-pill"><i></i>Planning phase</span>
+            Capstone research, 2025–2026. Team of five.
+          </p>
+          <h3 class="feature__title">ElecTrack</h3>
+          <p>A planned IoT smart energy system for homes in Barangay T. Padilla, Cebu City. Custom smart plugs will measure each appliance, an AI module will look for usage patterns and peak hours, and an Android app will show real-time power, history and an estimated monthly bill.</p>
+          <p class="feature__role"><b>My role:</b> IoT hardware and app developer. I'm planning the smart plug circuit and enclosure, the ESP32 firmware, the device pairing flow and the app screens.</p>
+          <p class="feature__note">Nothing is built yet. The hardware and app are designed on paper, and development starts after our methodology chapter is approved.</p>
+          <p class="tags__label">Planned tools (not used yet)</p>
+          <ul class="tags tags--planned" aria-label="Planned tools">
+            <li>ESP32</li><li>PZEM-004T v3</li><li>Arduino C++</li><li>React Native</li><li>TypeScript</li><li>Supabase</li>
+          </ul>
+          <a href="#inside" class="btn btn--glass feature__cta">See the plug design</a>
+        </div>
+        <div class="feature__phone" aria-hidden="true">
+          <div class="phone">
+            <div class="phone__notch"></div>
+            <p class="phone__label">App concept: living room plug</p>
+            <p class="phone__big"><b id="phoneW">0</b> W</p>
+            <svg class="phone__chart" viewBox="0 0 200 70" preserveAspectRatio="none">
+              <polyline id="phoneLine" fill="none" stroke-width="2.5" points="" />
+            </svg>
+            <div class="phone__rows">
+              <p><span>Rice cooker</span><b>0.42 kWh</b></p>
+              <p><span>Electric fan</span><b>0.31 kWh</b></p>
+              <p><span>Refrigerator</span><b>1.18 kWh</b></p>
+            </div>
+            <p class="phone__tip">Your fridge used 18% more than last week. Check the door seal.</p>
+          </div>
+        </div>
+      </article>
+
+      <h3 class="work__sub">Other projects</h3>
+      <!-- Filled from js/projects.js. Add new projects there, not here. -->
+      <ul class="projects" id="projectList"></ul>
+    </section>
+
+    <!-- ================= INSIDE THE PLUG (scroll-driven) ================= -->
+    <section class="inside" id="inside" aria-labelledby="insideTitle">
+      <div class="inside__sticky">
+        <div class="inside__copy">
+          <span class="status-pill"><i></i>Design concept, not built yet</span>
+          <h2 class="h2" id="insideTitle">What's inside the plug I'm designing</h2>
+          <p class="inside__intro">This is my plan for ElecTrack's smart plug. It will sit between the wall and one appliance and report how much power it uses. Scroll to open it up, front to back.</p>
+          <ol class="steps" id="steps">
+            <li class="step" data-part="front" data-n="1">
+              <h3>Front shell</h3>
+              <p>The appliance will plug into a standard Philippine outlet. A ring at the corner is planned to glow while the plug is sending readings.</p>
+            </li>
+            <li class="step" data-part="pzem" data-n="2">
+              <h3>PZEM-004T v3 meter</h3>
+              <p>A current transformer coil and metering chip will measure voltage, current, watts and kWh on the live line.</p>
+            </li>
+            <li class="step" data-part="esp" data-n="3">
+              <h3>ESP32 board</h3>
+              <p>The firmware I'm planning will poll the meter over UART every few seconds and post the readings over Wi‑Fi to our backend.</p>
+            </li>
+            <li class="step" data-part="back" data-n="4">
+              <h3>Back shell and prongs</h3>
+              <p>It plugs straight into the wall. We scoped it to monitor only, so there's no remote switch.</p>
+            </li>
+          </ol>
+        </div>
+        <div class="inside__stage">
+          <div class="stage stage--explode" id="explodeStage" role="img" aria-label="Concept model of the smart plug separating into its four planned layers."></div>
+          <div class="callouts" aria-hidden="true">
+            <span class="callout glass" data-for="front">Outlet + status ring</span>
+            <span class="callout glass" data-for="pzem">Will measure V, A, W, kWh</span>
+            <span class="callout glass" data-for="esp">Will read + send over Wi‑Fi</span>
+            <span class="callout glass" data-for="back">Into the wall</span>
+          </div>
+        </div>
+        <div class="inside__progress" aria-hidden="true"><span id="insideBar"></span></div>
+      </div>
+    </section>
+
+    <!-- ================= SKILLS ================= -->
+    <section class="section skills" id="skills" aria-labelledby="skillsTitle">
+      <h2 class="h2" id="skillsTitle">What I can do, and what I'm still learning</h2>
+      <div class="levels">
+        <div class="level glass" data-level="now">
+          <h3>I can do now</h3>
+          <ul>
+            <li>Computer hardware configuration and troubleshooting</li>
+            <li>Basic IT and computer literacy</li>
+            <li>Microsoft Office (Word, Excel, PowerPoint)</li>
+            <li>Working out JavaScript logic with a team</li>
+            <li>Prototyping screens in Figma</li>
+          </ul>
+        </div>
+        <div class="level glass" data-level="learning">
+          <h3>I'm learning</h3>
+          <ul>
+            <li>HTML, CSS and JavaScript</li>
+            <li>How microcontrollers and sensors work</li>
+            <li>Git and GitHub, starting with this site</li>
+          </ul>
+        </div>
+        <div class="level glass" data-level="planned">
+          <h3>Planned for ElecTrack</h3>
+          <ul>
+            <li>ESP32 board</li>
+            <li>PZEM-004T v3 energy meter</li>
+            <li>Arduino C++ firmware</li>
+            <li>React Native app screens</li>
+          </ul>
+        </div>
+        <div class="level glass" data-level="people">
+          <h3>Working with people</h3>
+          <ul>
+            <li>Leadership and teamwork</li>
+            <li>Time management and multitasking</li>
+            <li>Communication and problem-solving</li>
+            <li>Open to feedback</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= PATH (timeline) ================= -->
+    <section class="section timeline" id="path" aria-labelledby="pathTitle">
+      <h2 class="h2" id="pathTitle">Where I've been</h2>
+      <ol class="tl">
+        <li class="tl__item">
+          <span class="tl__when">2025 – now</span>
+          <div class="tl__body glass">
+            <h3>IoT Hardware &amp; App Developer</h3>
+            <p class="tl__where">ElecTrack capstone, Cebu Eastern College. Planning phase.</p>
+            <p>Planning the smart plug hardware, its ESP32 firmware, and the app's pairing and monitoring screens as part of our design chapter.</p>
+          </div>
+        </li>
+        <li class="tl__item">
+          <span class="tl__when">Past role</span>
+          <div class="tl__body glass">
+            <h3>Contact Tracer</h3>
+            <p class="tl__where">Cebu City Emergency Operations Center</p>
+            <p>Helped with contact tracing and information gathering, explained health and safety protocols to people, and kept accurate records while handling personal information responsibly.</p>
+          </div>
+        </li>
+        <li class="tl__item">
+          <span class="tl__when">Now</span>
+          <div class="tl__body glass">
+            <h3>BS Information Technology</h3>
+            <p class="tl__where">Cebu Eastern College. Currently enrolled.</p>
+          </div>
+        </li>
+        <li class="tl__item">
+          <span class="tl__when">2020 – 2021</span>
+          <div class="tl__body glass">
+            <h3>Senior High School</h3>
+            <p class="tl__where">University of the Visayas. Graduate.</p>
+          </div>
+        </li>
+      </ol>
+    </section>
+
+    <!-- ================= CONTACT ================= -->
+    <section class="section contact" id="contact" aria-labelledby="contactTitle">
+      <div class="contact__block glass frame">
+        <h2 class="contact__title" id="contactTitle">Have something that needs plugging in?</h2>
+        <p>I'm looking for an internship or OJT where I can learn and help out. Email is the fastest way to reach me.</p>
+        <div class="contact__actions">
+          <a class="btn btn--lg" href="mailto:johnlloydborces7@gmail.com">johnlloydborces7@gmail.com</a>
+          <button class="btn btn--glass btn--lg" type="button" id="copyEmail" data-email="johnlloydborces7@gmail.com">Copy email</button>
+          <a class="btn btn--glass btn--lg" id="resumeBtn" href="#" download hidden>Download resume</a>
+        </div>
+        <!-- GitHub / LinkedIn / resume come from js/config.js and only show once filled in -->
+        <ul class="contact__links" id="profileLinks">
+          <li>Cebu City, PH</li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>© <span id="year"></span> John Lloyd Borces.</p>
+  </footer>
+
+  <div class="toast glass" id="toast" role="status" aria-live="polite"></div>
+
+  <script src="js/config.js"></script>
+  <script src="js/projects.js"></script>
+  <script src="js/plug.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
